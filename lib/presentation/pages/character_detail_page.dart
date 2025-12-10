@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_morty_practice/domain/models/character.dart';
 import 'package:rick_morty_practice/domain/repositories/character_repository.dart';
 import 'package:rick_morty_practice/presentation/bloc/character_detail/character_detail_bloc.dart';
+import 'package:rick_morty_practice/presentation/pages/episode_detail_page.dart';
 
 class CharacterDetailPage extends StatelessWidget {
   final Character character;
@@ -86,28 +87,41 @@ class _EpisodesList extends StatelessWidget {
               itemCount: state.episodes.length,
               itemBuilder: (context, index) {
                 final episode = state.episodes[index];
-                return Container(
-                  width: 160,
-                  margin: const EdgeInsets.only(right: 8),
-                  child: Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            episode.episodeCode,
-                            style: const TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            episode.name,
-                            textAlign: TextAlign.center,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(fontSize: 12),
-                          ),
-                        ],
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            EpisodeDetailPage(episode: episode),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: 160,
+                    margin: const EdgeInsets.only(right: 8),
+                    child: Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              episode.episodeCode,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              episode.name,
+                              textAlign: TextAlign.center,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(fontSize: 12),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
