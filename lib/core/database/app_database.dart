@@ -25,7 +25,9 @@ class AppDatabase {
         id integer primary key,
         name text,
         image text,
-        species text
+        species text,
+        originName TEXT,
+        episodeIds TEXT
         )
         ''');
       },

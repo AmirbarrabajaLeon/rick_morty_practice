@@ -5,16 +5,27 @@ class CharacterEntity {
   final String name;
   final String species;
   final String image;
+  final String originName;
+  final String episodeIds;
 
   const CharacterEntity({
     required this.id,
     required this.name,
     required this.species,
     required this.image,
+    required this.originName,
+    required this.episodeIds,
   });
 
   Map<String, dynamic> toMap() {
-    return {'id': id, 'name': name, 'species': species, 'image': image};
+    return {
+      'id': id,
+      'name': name,
+      'species': species,
+      'image': image,
+      'originName': originName,
+      'episodeIds': episodeIds,
+    };
   }
 
   factory CharacterEntity.fromMap(Map<String, dynamic> map) {
@@ -23,6 +34,8 @@ class CharacterEntity {
       name: map['name'],
       species: map['species'],
       image: map['image'],
+      originName: map['originName'] ?? '',
+      episodeIds: map['episodeIds'] ?? '',
     );
   }
 
@@ -32,6 +45,9 @@ class CharacterEntity {
       name: character.name,
       species: character.species,
       image: character.image,
+      originName: character.originName,
+      // Convertimos la lista [1, 2] a String "1,2"
+      episodeIds: character.episodeIds.join(','),
     );
   }
 
@@ -42,6 +58,8 @@ class CharacterEntity {
       species: species,
       image: image,
       isFavorite: true,
+      originName: originName,
+      episodeIds: episodeIds.split(',').map(int.parse).toList(),
     );
   }
 }

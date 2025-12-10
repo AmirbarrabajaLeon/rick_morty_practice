@@ -21,11 +21,14 @@ class MainApp extends StatelessWidget {
       dao: CharacterDao(),
     );
 
-    return BlocProvider(
-      create: (context) => CharactersBloc(repository: repository),
-      child: const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: MainPage(),
+    return RepositoryProvider.value(
+      value: repository,
+      child: BlocProvider(
+        create: (context) => CharactersBloc(repository: repository),
+        child: const MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: MainPage(),
+        ),
       ),
     );
   }
