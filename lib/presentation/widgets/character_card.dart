@@ -25,7 +25,7 @@ class CharacterCard extends StatelessWidget {
                 loadingBuilder: (context, child, loadingProgress) {
                   if (loadingProgress == null) return child;
                   return const SizedBox(
-                    height: 150,
+                    height: 140,
                     child: Center(
                       child: CircularProgressIndicator(strokeWidth: 2),
                     ),
@@ -33,7 +33,7 @@ class CharacterCard extends StatelessWidget {
                 },
                 errorBuilder: (context, error, stackTrace) {
                   return Container(
-                    height: 150,
+                    height: 140,
                     width: double.infinity,
                     color: Colors.grey[300],
                     child: const Icon(

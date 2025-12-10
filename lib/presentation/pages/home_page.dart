@@ -21,38 +21,40 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // 2. Foto del alumno (usamos un Icono o NetworkImage si tienes url)
-          const CircleAvatar(radius: 50, child: Icon(Icons.person, size: 50)),
-          const SizedBox(height: 10),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // 2. Foto del alumno (usamos un Icono o NetworkImage si tienes url)
+            const CircleAvatar(radius: 50, child: Icon(Icons.person, size: 50)),
+            const SizedBox(height: 10),
 
-          // 3. Textos
-          Text(
-            nombre,
-            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          Text(
-            codigo,
-            style: const TextStyle(fontSize: 18, color: Colors.grey),
-          ),
-          const SizedBox(height: 20),
+            // 3. Textos
+            Text(
+              nombre,
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              codigo,
+              style: const TextStyle(fontSize: 18, color: Colors.grey),
+            ),
+            const SizedBox(height: 20),
 
-          // 4. Resultado del Algoritmo
-          Container(
-            padding: const EdgeInsets.all(16),
-            color: Colors.blueAccent,
-            child: Text(
-              "API Asignada: ${getNombreApi()}",
-              style: const TextStyle(
-                fontSize: 20,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
+            // 4. Resultado del Algoritmo
+            Container(
+              padding: const EdgeInsets.all(16),
+              color: Colors.blueAccent,
+              child: Text(
+                "API Asignada: ${getNombreApi()}",
+                style: const TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
