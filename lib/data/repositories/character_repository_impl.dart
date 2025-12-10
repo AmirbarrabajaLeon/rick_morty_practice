@@ -39,12 +39,11 @@ class CharacterRepositoryImpl implements CharacterRepository {
   @override
   Future<List<Character>> getFavorites() async {
     try {
-      // Obtenemos las entidades de la BD local
+      // Ahora dao devuelve CharacterEntity
       final localEntities = await dao.getFavoriteCharacters();
-      // Las convertimos a modelos de dominio y marcamos isFavorite en true
-      return localEntities
-          .map((e) => e.toDomain().copyWith(isFavorite: true))
-          .toList();
+
+      // CharacterEntity ya tiene toDomain(), así que esto funciona directo
+      return localEntities.map((e) => e.toDomain()).toList();
     } catch (e) {
       return Future.error(e);
     }

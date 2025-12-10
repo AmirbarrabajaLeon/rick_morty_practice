@@ -34,4 +34,14 @@ class CharacterEntity {
       image: character.image,
     );
   }
+
+  Character toDomain() {
+    return Character(
+      id: id,
+      name: name,
+      species: species,
+      image: image,
+      isFavorite: true,
+    );
+  }
 }
