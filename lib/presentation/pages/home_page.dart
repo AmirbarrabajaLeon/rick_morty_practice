@@ -24,15 +24,6 @@ class HomePage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // 1. Imagen del espacio
-          Image.network(
-            'https://cdn.pixabay.com/photo/2012/11/28/10/54/hubble-67623_1280.jpg', // URL de ejemplo
-            height: 250,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
-          const SizedBox(height: 20),
-
           // 2. Foto del alumno (usamos un Icono o NetworkImage si tienes url)
           const CircleAvatar(radius: 50, child: Icon(Icons.person, size: 50)),
           const SizedBox(height: 10),
