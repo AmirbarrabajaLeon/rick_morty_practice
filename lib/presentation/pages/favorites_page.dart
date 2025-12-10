@@ -33,11 +33,11 @@ class _FavoritesPageState extends State<FavoritesPage> {
           if (state.status == Status.failure) {
             return Center(child: Text("Error: ${state.message}"));
           }
-          if (state.characters.isEmpty) {
+          if (state.favorites.isEmpty) {
             return const Center(child: Text("No tienes favoritos guardados"));
           }
           // Reutilizamos tu widget CharactersList
-          return CharactersList(characters: state.characters);
+          return CharactersList(characters: state.favorites);
         },
       ),
     );
