@@ -35,4 +35,18 @@ class CharacterRepositoryImpl implements CharacterRepository {
         ? dao.delete(character.id)
         : dao.insert(CharacterEntity.fromDomain(character));
   }
+
+  @override
+  Future<List<Character>> getFavorites() async {
+    try {
+      // Obtenemos las entidades de la BD local
+      final localEntities = await dao.getFavoriteCharacters();
+      // Las convertimos a modelos de dominio y marcamos isFavorite en true
+      return localEntities
+          .map((e) => e.toDomain().copyWith(isFavorite: true))
+          .toList();
+    } catch (e) {
+      return Future.error(e);
+    }
+  }
 }

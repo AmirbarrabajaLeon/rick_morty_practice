@@ -13,6 +13,7 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
   CharactersBloc({required this.repository}) : super(const CharactersState()) {
     on<SearchCharcters>(_searchCharacters);
     on<ToggleFavorite>(_toggleFavorite);
+    on<GetFavoriteCharacters>(_onGetFavoriteCharacters); // <--- Registrar
   }
 
   FutureOr<void> _searchCharacters(
@@ -43,5 +44,18 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
       }
     }).toList();
     emit(state.copyWith(characters: updateCharacters));
+  }
+
+  Future<void> _onGetFavoriteCharacters(
+    GetFavoriteCharacters event,
+    Emitter<CharactersState> emit,
+  ) async {
+    emit(state.copyWith(status: Status.loading));
+    try {
+      final favorites = await repository.getFavorites();
+      emit(state.copyWith(status: Status.success, characters: favorites));
+    } catch (e) {
+      emit(state.copyWith(status: Status.failure, message: '$e'));
+    }
   }
 }

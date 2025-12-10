@@ -13,3 +13,5 @@ class ToggleFavorite extends CharactersEvent {
   final Character character;
   const ToggleFavorite({required this.character});
 }
+
+class GetFavoriteCharacters extends CharactersEvent {}
